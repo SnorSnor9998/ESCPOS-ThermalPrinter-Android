@@ -2,6 +2,7 @@ package com.dantsu.thermalprinter.async;
 
 import android.content.Context;
 
+import com.dantsu.escposprinter.EscPosCharsetEncoding;
 import com.dantsu.escposprinter.connection.DeviceConnection;
 import com.dantsu.escposprinter.connection.bluetooth.BluetoothPrintersConnections;
 import com.dantsu.escposprinter.exceptions.EscPosConnectionException;
@@ -26,7 +27,9 @@ public class AsyncBluetoothEscPosPrint extends AsyncEscPosPrint {
                     BluetoothPrintersConnections.selectFirstPaired(),
                     printerData.getPrinterDpi(),
                     printerData.getPrinterWidthMM(),
-                    printerData.getPrinterNbrCharactersPerLine()
+                    printerData.getPrinterNbrCharactersPerLine(),
+                    printerData.getEncoding()
+
             );
             printersData[0].setTextToPrint(printerData.getTextToPrint());
         } else {

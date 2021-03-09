@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.dantsu.escposprinter.EscPosCharsetEncoding;
 import com.dantsu.escposprinter.EscPosPrinter;
 import com.dantsu.escposprinter.connection.DeviceConnection;
 import com.dantsu.escposprinter.connection.bluetooth.BluetoothConnection;
@@ -284,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SimpleDateFormat")
     public AsyncEscPosPrinter getAsyncEscPosPrinter(DeviceConnection printerConnection) {
         SimpleDateFormat format = new SimpleDateFormat("'on' yyyy-MM-dd 'at' HH:mm:ss");
-        AsyncEscPosPrinter printer = new AsyncEscPosPrinter(printerConnection, 203, 48f, 32);
+        AsyncEscPosPrinter printer = new AsyncEscPosPrinter(printerConnection, 203, 48f, 32, new EscPosCharsetEncoding("windows-1252", 16));
         return printer.setTextToPrint(
                 "[C]<img>" + PrinterTextParserImg.bitmapToHexadecimalString(printer, this.getApplicationContext().getResources().getDrawableForDensity(R.drawable.logo, DisplayMetrics.DENSITY_MEDIUM)) + "</img>\n" +
                         "[L]\n" +
